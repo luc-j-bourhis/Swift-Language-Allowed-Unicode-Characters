@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+    "build_systems":
+    [
+        {
+            "name": "Show Swift Allowed Characters",
+            "shell_cmd": "/usr/local/bin/fish -c 'source (rbenv init -|psub); bundle exec haml --trace -r $project_path/swiftchar.rb swift-characters.haml > swift-characters.html; open swift-characters.html'"
+        }
+    ]
+}

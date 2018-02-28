@@ -1,0 +1,8 @@
+%table.character_table{:class => (defined? much_bigger) ? "much_bigger" : nil}
+  - chars.each_slice(33) do |s|
+    %tr
+      - s.reject{|c| name(c).nil?}.each do |c|
+        %td.tooltip
+          %span= c
+          %span.tooltiptext= "%s <br> %s" % [name(c), code(c)]
+
