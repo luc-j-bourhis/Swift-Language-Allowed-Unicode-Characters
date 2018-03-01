@@ -1,13 +1,17 @@
 %html
   %head
-    %link(rel="stylesheet" type="text/css" href="stylesheet.css")
-    %script(src="menu.js")
+    %link{:rel  => "stylesheet",
+          :type => "text/css",
+          :href => "stylesheet.css"}
+    %script{:src => "menu.js"}
   %body{:onload => "initialise_my_font()"}
     .dropdown
       %button.drop_button{:onclick => "on_click_font_button()"} Font
       .dropdown_content#my_font_menu
         - FONTS.each do |fonts|
-          %a{:href => '#', :onclick => 'select_my_font(this)', :data => {:fonts => fonts.join(',')}}= "%s (%s)" % [fonts[0], fonts[-1]]
+          %a{:href => '#',
+             :onclick => 'select_my_font(this)',
+             :data => {:fonts => fonts.join(',')}}= "%s (%s)" % [fonts[0], fonts[-1]]
     %h1 Characters allowed by the syntax of Swift language
     %p
       %span Reference:
@@ -16,10 +20,13 @@
     %h2 1. Identifiers
     %h3 1.1 Head
     %p Lower- and upper-case latin letters, or underscore, or any of the characters in the following table
-    %div= render "character_table", :chars => IDENTIFIER_HEAD.reject{|c| code(c).hex <= 127}
+    %div= render("character_table",                                        |
+                 :chars => IDENTIFIER_HEAD.reject{|c| code(c).hex <= 127}) |
     %h3 1.2 Subsequent Characters
     Any head character, or any digit, or any character from the following table (twice larger for visibility)
-    %div= render "character_table", :chars => IDENTIFIER.reject{|c| code(c).hex <= 127}, :much_bigger => true
+    %div= render("character_table",                                   |
+                 :chars => IDENTIFIER.reject{|c| code(c).hex <= 127}, |
+                 :much_bigger => true)                                |
     %h2 2. Operators
     %h3 2.1 Head
     %div= render "character_table", :chars => OPERATOR_HEAD
