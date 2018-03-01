@@ -54,7 +54,12 @@ OPERATOR = [
     *"\uE0100".."\uE01EF"
 ]
 
-FONTS = [%w(Menlo monospace), %w(Symbola serif)]
+FONTS = [
+    %w(Menlo monospace),
+    ['SF Mono Regular', 'monospace'],
+    %w(Inconsolata monospace),
+    %w(Symbola serif)
+]
 
 def code(c)
     c.unpack("U").map {|x| "%04X" % x }.join(",")
