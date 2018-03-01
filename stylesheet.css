@@ -91,3 +91,6 @@ h1 {
     display:block;
 }
 
+.dropdown_content a.selected {
+    font-weight: bold;
+}

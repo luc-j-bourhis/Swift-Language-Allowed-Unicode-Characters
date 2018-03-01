@@ -24,10 +24,20 @@ function update_character_table_font(font) {
 
 function select_my_font(clicked) {
     font = clicked.dataset.fonts;
+    document.querySelectorAll("#my_font_menu a").forEach(
+        function(element, index, array) {
+            if (element.classList.contains("selected")) {
+                element.classList.remove("selected")
+            }
+        }
+    )
+    clicked.classList.toggle("selected")
     update_character_table_font(font);
 }
 
 function initialise_my_font() {
-    font = document.querySelectorAll("#my_font_menu a")[0].dataset.fonts;
+    items = document.querySelectorAll("#my_font_menu a")
+    items[0].classList.toggle("selected")
+    font = items[0].dataset.fonts;
     update_character_table_font(font);
 }
